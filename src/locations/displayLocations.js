@@ -1,5 +1,4 @@
 window.locationsMoveFilter = null
-
 function appendLocationsToTable(key){
     const location = key.split("\\")[0]
     const method = key.split("\\")[1]
@@ -34,6 +33,13 @@ function appendLocationsToTable(key){
         }
     }
 
+    // if the pokemon is in both the left (wild) and right (boss) side of biomes it only gets displayed in the boss side
+    // EXAMPLES Luvdisc in seabed --- Tropius in jungle
+    // [ Species.LUVDISC, Type.WATER, -1, [
+    //  [ Biome.SEABED, BiomePoolTier.UNCOMMON ],
+    //  [ Biome.SEABED, BiomePoolTier.BOSS ]
+    // ]
+    //],
     let locationTable = document.getElementById(`${location}`)
     if(!locationTable){
         locationTable = returnLocationTable(location)
